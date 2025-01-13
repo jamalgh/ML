@@ -4,6 +4,7 @@ pandas
 seaborn
 matplotlib
 joblib
+shap
 os
 sqlite3
 scikit-learn
@@ -21,4 +22,4 @@ sqlite3,os --->These libraries are included by default in Python’s standard li
 
 Run the following command to install all libraries at once:
 
-pip install Flask pandas seaborn matplotlib joblib scikit-learn
+pip install Flask pandas seaborn matplotlib joblib scikit-learn shap
