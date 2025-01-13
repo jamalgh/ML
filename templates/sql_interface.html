@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Queries</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+        .left, .right {
+            padding: 15px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .left {
+            width: 45%;
+            margin-right: 5%;
+        }
+        .right {
+            width: 50%;
+        }
+        h3 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .right h3 {
+            margin-top: 0;
+        }
+        p {
+            text-align: center;
+            font-style: italic;
+        }
+        /* Back button styling */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #ff6347; /* Distinct tomato red color */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #d94f3d; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>SQL Queries for Customer Data</header>
+    <div class="container">
+        <!-- Left Section for Forms -->
+        <div class="left">
+            <!-- Filter Customers by Age Range -->
+            <form method="POST">
+                <h3>1. Filter Customers by Age Range</h3>
+                <input type="number" name="min_age" placeholder="Minimum Age" required>
+                <input type="number" name="max_age" placeholder="Maximum Age" required>
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- Customers Above a Certain Age -->
+            <form method="POST">
+                <h3>2. Customers Above a Certain Age</h3>
+                <input type="number" name="min_age_above" placeholder="Minimum Age" required>
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- Average Age by Satisfaction Level -->
+            <form method="POST">
+                <h3>3. Average Age by Customer Satisfaction</h3>
+                <input type="number" name="satisfaction_level" placeholder="Satisfaction Level" required>
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- Top N Customers by Income -->
+            <form method="POST">
+                <h3>4. Top N Customers by Income</h3>
+                <input type="number" name="top_n" placeholder="Number of Top Customers" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Right Section for Results -->
+        <div class="right">
+            {% if query_title %}
+            <h3>{{ query_title }}</h3>
+            {% if results %}
+            <table>
+                <tr>
+                    {% for col in results[0].keys() %}
+                    <th>{{ col }}</th>
+                    {% endfor %}
+                </tr>
+                {% for row in results %}
+                <tr>
+                    {% for col in row.keys() %}
+                    <td>{{ row[col] }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>No results found.</p>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Go Back Button at Bottom Left -->
+    <a href="/" class="back-button">Go Back to Main Page</a>
+</body>
+</html>

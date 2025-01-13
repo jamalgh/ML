@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    
+    {% for name, file in plot_files.items() %}
+        <h2>{{ name.replace('_', ' ').title() }}</h2>
+        <img src="{{ url_for('static', filename=file) }}" alt="{{ name }}" style="width:80%; margin:10px;">
+    {% endfor %}
+</body>
+</html>

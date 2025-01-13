@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Summary Statistics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 10px;
+            background: #fff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Summary Statistics</h1>
+
+    <div class="section">
+        <h2>Descriptive Statistics</h2>
+        {{ stats | safe }}
+    </div>
+
+    <div class="section">
+        <h2>Missing Values</h2>
+        {{ missing_values | safe }}
+    </div>
+
+    <div class="section">
+        <h2>Customer Satisfaction Value Counts</h2>
+        {{ value_counts | safe }}
+    </div>
+</body>
+</html>
