@@ -1,0 +1,2 @@
+Mean Absolute Error (MAE): 0.296975
+R-squared Score (R2): 0.9362164471597131
