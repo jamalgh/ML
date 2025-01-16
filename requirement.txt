@@ -1,0 +1,7 @@
+Flask
+pandas
+seaborn
+matplotlib
+joblib
+shap
+scikit-learn
