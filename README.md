@@ -134,7 +134,7 @@ The dataset is simulated using Python libraries such as `numpy` and `pandas`. It
 ## Authors
 - **Shagufta Shaheen** - *EDA, Model Training,API* - [GitHub Profile](https://github.com/Lunar-Vibes)
 - **Eng Kah Hui** - *SQL, Model Training, API* - [GitHub Profile](https://github.com/clarice-eng7117)
-- **Jamal Jameel AlShaweai** - *Data Simulation and Preparation, API* - [GitHub Profile](https://github.com/your-profile)
+- **Jamal Jameel AlShaweai** - *Data Simulation and Preparation, API* - [GitHub Profile](https://github.com/jamalgh))
 
 ## Acknowledgments
 - Inspired by [https://github.com/glowform/intro_python_sql_2024/blob/main/exercises/ex_adv2_ML.ipynb]
