@@ -64,7 +64,21 @@ The project "Build a Predictive Analytics Model for Business Insights Using ML" 
 To run the project, ensure you have the following installed:
 
 - Python 3.8+
-- Libraries: `numpy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`, `keras`, `sqlite3`, `sqlalchemy`, `shap`, `joblib`
+- **Libraries**:
+	- Flask: build the web application and handle user interactions.
+	- pandas: manipulate and analyze data efficiently.
+	- numpy: support large, multi-dimensional arrays and matrices, along with mathematical functions to operate on them.
+	- seaborn: create beautiful, statistical visualizations.
+	- matplotlib: generate a variety of plots and visualizations.
+	- joblib: save and load trained machine learning models.
+	- scikit-learn: provide tools for machine learning tasks like clustering, classification, regression, and data preprocessing.
+	- shap: explain model predictions and understand feature importance.
+	- keras: create and train deep learning models with an easy-to-use API.
+
+
+
+**Note**:  
+`os` and `sqlite3` are included in Python’s standard library and do not need to be installed separately.
 
 ## Dataset
 The dataset is simulated using Python libraries such as `numpy` and `pandas`. It includes features like:
