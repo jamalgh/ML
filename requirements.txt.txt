@@ -1,25 +1,7 @@
-1. The list of required libraries and tools:
 Flask
 pandas
 seaborn
 matplotlib
 joblib
 shap
-os
-sqlite3
 scikit-learn
-
-
-Flask: Used to build the web application and handle user interactions.
-pandas: Helps with manipulating and analyzing data efficiently.
-seaborn: A library for creating beautiful, statistical visualizations.
-matplotlib: Used for generating a variety of plots and visualizations.
-joblib: Essential for saving and loading trained machine learning models.
-scikit-learn: Provides powerful tools for machine learning tasks like clustering, classification, regression, and data preprocessing
-
-sqlite3,os --->These libraries are included by default in Python’s standard library,
-
-
-Run the following command to install all libraries at once:
-
-pip install Flask pandas seaborn matplotlib joblib scikit-learn shap
