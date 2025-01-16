@@ -14,6 +14,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split  # Import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import mean_absolute_error
 
 
@@ -285,7 +287,17 @@ def predict_customer():
     # Render input form for GET request
     return render_template('predict_customer.html')
 
+@app.route('/model_comparison_summary')
+def model_comparison():
+    # Define the model comparison data
+    model_data = {
+        'random_forest': 94,
+        'decision_tree': 94.5,
+        'neural_network': 25.5
+    }
 
+    # Render the comparison as an HTML table
+    return render_template('model_comparison.html', model_data=model_data)
 
 # Route: View Prediction Results
 # Displays the saved prediction results and evaluation metrics.
@@ -451,6 +463,79 @@ def clv_prediction():
     except Exception as e:
         return f"An error occurred: {e}"
 
+
+# Route: Neural Network for Customer Satisfaction Prediction
+@app.route('/neural_network', methods=['GET', 'POST'])
+def neural_network_satisfaction():
+    try:
+        # Load Data
+        data = pd.read_csv(DATA_PATH)
+
+        # Features and target for satisfaction prediction
+        X = data[['age', 'income', 'purchase_history']]
+        y = data['customer_satisfaction']
+
+        # Train-test split
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+        # Initialize and train MLPClassifier (Neural Network)
+        nn_model = MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=1000, random_state=42)
+        nn_model.fit(X_train, y_train)
+
+        # Predictions and evaluation
+        y_pred_nn = nn_model.predict(X_test)
+        accuracy_nn = accuracy_score(y_test, y_pred_nn)
+        report_nn = classification_report(y_test, y_pred_nn, output_dict=True)
+
+        # Convert classification report to DataFrame for display
+        report_df_nn = pd.DataFrame(report_nn).transpose()
+
+        # Return results to template
+        return render_template(
+            'neural_network.html',
+            accuracy=round(accuracy_nn * 100, 2),
+            report_html=report_df_nn.to_html(classes="table table-striped", float_format="%.2f", border=0)
+        )
+    except Exception as e:
+        return f"An error occurred: {e}"
+    
+# Route: Churn Prediction with Decision Tree
+@app.route('/churn_prediction_decision_tree', methods=['GET', 'POST'])
+def decision_tree_churn():
+    try:
+        # Load Data
+        data = pd.read_csv(DATA_PATH)
+
+        # Create binary churn target
+        data['churn'] = (data['customer_satisfaction'] < 6).astype(int)
+
+        # Features and target
+        X = data[['age', 'income', 'purchase_history']]
+        y = data['churn']
+
+        # Train-test split
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+        # Initialize and train DecisionTreeClassifier
+        dt_model = DecisionTreeClassifier(random_state=42)
+        dt_model.fit(X_train, y_train)
+
+        # Predictions and evaluation
+        y_pred_dt = dt_model.predict(X_test)
+        accuracy_dt = accuracy_score(y_test, y_pred_dt)
+        report_dt = classification_report(y_test, y_pred_dt, output_dict=True)
+
+        # Convert classification report to DataFrame for display
+        report_df_dt = pd.DataFrame(report_dt).transpose()
+
+        # Return results to template
+        return render_template(
+            'churn_prediction_decision_tree.html',
+            accuracy=round(accuracy_dt * 100, 2),
+            report_html=report_df_dt.to_html(classes="table table-striped", float_format="%.2f", border=0)
+        )
+    except Exception as e:
+        return f"An error occurred: {e}"
 
 
 # Route: Churn Prediction
