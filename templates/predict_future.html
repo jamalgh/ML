@@ -1,0 +1,139 @@
+# Chatgpt used here
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Future Customer Satisfaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result-section {
+            margin-top: 30px;
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .result-section h3 {
+            color: #333;
+        }
+        .result-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .result-section ul li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .nav-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .nav-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Predict Future Customer Satisfaction</h2>
+        <form method="POST" action="/predict_future">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" step="1" placeholder="Enter integer age" required>
+
+            <label for="income">Income:</label>
+            <input type="number" id="income" name="income" step="0.1" placeholder="Enter annual income" required>
+
+            <label for="purchase_history">Purchase History:</label>
+            <input type="number" id="purchase_history" name="purchase_history" step="0.1" placeholder="Enter purchase amount" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result-section">
+            <h3>Prediction Result</h3>
+            <p>Input Details:</p>
+            <ul>
+                <li><strong>Age:</strong> {{ age }}</li>
+                <li><strong>Income:</strong> {{ income }}</li>
+                <li><strong>Purchase History:</strong> {{ purchase_history }}</li>
+            </ul>
+            <h3>Predicted Customer Satisfaction:</h3>
+            <p><strong>{{ prediction }}</strong></p>
+        </div>
+        {% endif %}
+
+        <div class="button-container">
+            <a href="/" class="nav-button">Home</a>
+            <a href="javascript:history.back()" class="nav-button">Back</a>
+        </div>
+    </div>
+</body>
+</html>

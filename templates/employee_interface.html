@@ -1,0 +1,130 @@
+# Chatgpt used here
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Data Queries</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #0078D7;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 900px;
+        }
+        .query-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        h2 {
+            color: #0078D7;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, button {
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #0078D7;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #005BB5;
+        }
+        .result-box {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>Employee Data Query Interface</header>
+    <div class="container">
+
+        <!-- Filter Employees by Satisfaction Level -->
+        <div class="query-card">
+            <h2>1. Filter Employees by Satisfaction Level</h2>
+            <form action="/filter_by_satisfaction" method="POST">
+                <label>Satisfaction Level:</label>
+                <input type="number" name="satisfaction_level" placeholder="Enter Satisfaction Level" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Filter Employees by Age Range -->
+        <div class="query-card">
+            <h2>2. Filter Employees by Age Range</h2>
+            <form action="/age_range" method="POST">
+                <label>Minimum Age:</label>
+                <input type="number" name="min_age" placeholder="Enter Minimum Age" required>
+                <label>Maximum Age:</label>
+                <input type="number" name="max_age" placeholder="Enter Maximum Age" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Employees Above a Certain Age -->
+        <div class="query-card">
+            <h2>3. Employees Above a Certain Age</h2>
+            <form action="/age_above" method="POST">
+                <label>Minimum Age:</label>
+                <input type="number" name="min_age" placeholder="Enter Minimum Age" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Average Age by Satisfaction Level -->
+        <div class="query-card">
+            <h2>4. Average Age by Satisfaction Level</h2>
+            <form action="/average_age" method="POST">
+                <label>Satisfaction Level:</label>
+                <input type="number" name="satisfaction_level" placeholder="Enter Satisfaction Level" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Top N Employees by Income -->
+        <div class="query-card">
+            <h2>5. Top N Employees by Income</h2>
+            <form action="/top_income" method="POST">
+                <label>Number of Employees (N):</label>
+                <input type="number" name="top_n" placeholder="Enter Number of Employees" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
