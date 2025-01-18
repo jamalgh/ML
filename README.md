@@ -110,7 +110,8 @@ The dataset is simulated using Python libraries such as `numpy` and `pandas`. It
 	```bash
    python 2_App.py
    ```
-
+## Run Terminal
+![Windows - PowerShell](images/run_terminal.png )
 
 ## Project Structure
 ```
